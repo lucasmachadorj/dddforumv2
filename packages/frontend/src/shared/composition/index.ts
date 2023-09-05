@@ -3,13 +3,14 @@ import { RegistrationPageController } from '../../pages/registrationPage/registr
 import { MenuPresenter } from '../components/menu/menuPresenter';
 import { NotificationService } from '../notifications/notificationService';
 import { GlobalCache } from '../persistence/globalState';
-import { RoutingService } from '../routing/routingService';
+import { BrowserRouterGateway, Router } from '../routing/router';
 
 const cache = new GlobalCache();
 const userRepo = new UserRepository(cache);
 const menuPresenter = new MenuPresenter(cache);
 const notificationsService = new NotificationService();
-const routingService = new RoutingService();
 const registrationPageController = new RegistrationPageController(notificationsService, userRepo);
+const routerGateway = new BrowserRouterGateway();
+const router = new Router(cache, routerGateway);
 
-export { cache, menuPresenter, notificationsService, registrationPageController, routingService, userRepo };
+export { cache, menuPresenter, notificationsService, registrationPageController, router, userRepo };

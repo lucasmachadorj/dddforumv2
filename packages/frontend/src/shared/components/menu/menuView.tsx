@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
+import { router } from '../../composition';
 import { MenuPresenter } from './menuPresenter';
 import { MenuViewModel } from './menuViewModel';
 
@@ -41,7 +41,7 @@ export const MenuView = ({ presenter }: MenuViewProps) => {
           <span>Logout</span>
         </span>
       ) : (
-        <Link to={'/register'}>Register</Link>
+        <button onClick={() => router.navigateTo('register')}>Register</button>
       )}
     </div>
   );

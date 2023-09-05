@@ -1,6 +1,5 @@
-import { useNavigate } from 'react-router-dom';
-
 import { UserRepository } from '../../modules/users/repos/userRepo';
+import { router } from '../../shared/composition';
 import { NotificationService } from '../../shared/notifications/notificationService';
 import { UsersState } from '../../shared/persistence/globalState';
 import { RegistrationForm, RegistrationFormProps } from './domainObjects/registrationForm';
@@ -26,7 +25,6 @@ export class RegistrationPageController {
      */
 
     function useRegistrationPageController() {
-      const navigate = useNavigate();
       return {
         register: (registrationFormProps: RegistrationFormProps) => {
           // Validate the form
@@ -42,7 +40,7 @@ export class RegistrationPageController {
             registrationFormOrError,
             (_u: UsersState) => {
               notifications.showSuccess('Created! Good stuff.');
-              setTimeout(() => navigate('/'), 2000);
+              setTimeout(() => router.navigateTo('home'), 2000);
             },
             (_error: unknown) => {
               notifications.showError('Ahh, something went wrong');

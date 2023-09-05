@@ -22,11 +22,10 @@ function App() {
   const [currentRoute, setCurrentRoute] = useState(browserRoutes[0].id);
 
   useEffect(() => {
-    router.loadApplicationRoutes();
-
     router.onRouteChange('app', (routeId) => {
       setCurrentRoute(routeId);
     });
+    router.loadApplicationRoutes();
   }, []);
 
   return (

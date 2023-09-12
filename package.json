@@ -24,7 +24,8 @@
     "lint:fix": "npm run lint -- --fix",
     "test:unit": "cross-env NODE_ENV=development jest -c jest.config.unit.ts",
     "test:e2e": "cross-env NODE_ENV=development jest -c jest.config.e2e.ts",
-    "test:infra": "cross-env NODE_ENV=development jest -c jest.config.infra.ts"
+    "test:infra": "cross-env NODE_ENV=development jest -c jest.config.infra.ts",
+    "test:watch": "jest -c jest.config.unit.ts --watchAll"
   },
   "devDependencies": {
     "@types/jest": "^29.5.2",

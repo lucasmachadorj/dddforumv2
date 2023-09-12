@@ -19,7 +19,7 @@ const browserRoutes = [
 ];
 
 function App() {
-  const [currentRoute, setCurrentRoute] = useState(browserRoutes[0].id);
+  const [currentRoute, setCurrentRoute] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     router.onRouteChange('app', (routeId) => {

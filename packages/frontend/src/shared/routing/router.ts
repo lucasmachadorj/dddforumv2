@@ -6,7 +6,7 @@ type ApplicationRouteConfig = {
 };
 
 export class Router {
-  private currentRoute: { id: string };
+  currentRoute: { id: string };
   private listeners: { [key: string]: (routeId: string) => void } = {};
 
   constructor(private routerGateway: BrowserRouterGateway) {
@@ -39,6 +39,8 @@ export class Router {
       });
     });
     this.routerGateway.loadApplicationRoutes(browserRouteConfigs);
+
+    this.notifyRouteChange();
   }
 
   private execRouteHandler(newRouteId: string) {
@@ -75,7 +77,6 @@ export class Router {
     }
 
     this.routerGateway.navigateTo(route.path);
-    this.notifyRouteChange();
   }
 
   private notifyRouteChange() {

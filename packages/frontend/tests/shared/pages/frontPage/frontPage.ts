@@ -19,7 +19,6 @@ export class FrontPage {
   }
 
   async open() {
-    console.log('Open front page URL', this.baseUrl);
     await this.driver.page.goto(this.baseUrl);
   }
 
